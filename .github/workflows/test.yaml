@@ -62,8 +62,9 @@ jobs:
         run: go install gotest.tools/gotestsum@latest; gotestsum --junitfile results.xml -- -timeout 0 -v ./... || true
         shell: bash
         env:
-          RETRYCOUNT: 1
+          OCTOTESTRETRYCOUNT: 1
           LICENSE: ${{ secrets.LICENSE }}
+          OCTOTESTWAITFORAPI: !!str false
       - if: always()
         name: Report
         uses: dorny/test-reporter@v1
@@ -76,9 +77,8 @@ jobs:
         run: go install gotest.tools/gotestsum@latest; gotestsum --junitfile results.xml -- -timeout 0 -v ./... || true
         shell: bash
         env:
-          RETRYCOUNT: 1
+          OCTOTESTRETRYCOUNT: 1
           LICENSE: ${{ secrets.LICENSE }}
-          ENABLE_WORKAROUND: !!str true
       - if: always()
         name: Report
         uses: dorny/test-reporter@v1
@@ -91,9 +91,10 @@ jobs:
         run: go install gotest.tools/gotestsum@latest; gotestsum --junitfile results.xml -- -timeout 0 -v ./... || true
         shell: bash
         env:
-          RETRYCOUNT: 1
+          OCTOTESTRETRYCOUNT: 1
           LICENSE: ${{ secrets.LICENSE }}
-          OCTOVERSION: 2022.4
+          OCTOTESTVERSION: 2022.4
+          OCTOTESTWAITFORAPI: !!str false
       - if: always()
         name: Report
         uses: dorny/test-reporter@v1

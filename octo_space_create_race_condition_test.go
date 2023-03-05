@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/OctopusDeploy/go-octopusdeploy/v2/pkg/client"
-	"github.com/mcasperson/OctoSapceCreateRace/internal/test"
+	"github.com/mcasperson/OctopusTerraformTestFramework/test"
 	"path/filepath"
 	"testing"
 )
