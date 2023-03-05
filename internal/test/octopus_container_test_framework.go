@@ -410,7 +410,9 @@ func (o *OctopusContainerTest) initialiseOctopus(t *testing.T, container *Octopu
 			vars = populateVars
 		}
 
-		o.waitForSpace(container.URI, spaceId)
+		if os.Getenv("ENABLE_WORKAROUND") == "true" {
+			o.waitForSpace(container.URI, spaceId)
+		}
 
 		err = o.terraformApply(t, terraformProjectDir, container.URI, spaceId, vars)
 
