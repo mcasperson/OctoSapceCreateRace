@@ -264,7 +264,7 @@ func (o *OctopusContainerTest) ArrangeTest(t *testing.T, testFunc func(t *testin
 
 			return testFunc(t, octopusContainer, client)
 		},
-		retry.Attempts(3),
+		retry.Attempts(1),
 	)
 
 	if err != nil {
