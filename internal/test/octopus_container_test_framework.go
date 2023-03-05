@@ -16,6 +16,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -133,6 +134,24 @@ func (o *OctopusContainerTest) setupDatabase(ctx context.Context) (*mysqlContain
 	}, nil
 }
 
+func (o *OctopusContainerTest) getOctopusVersion() string {
+	overrideOctoTag := os.Getenv("OCTOVERSION")
+	if overrideOctoTag != "" {
+		return overrideOctoTag
+	}
+
+	return "latest"
+}
+
+func (o *OctopusContainerTest) getRetryCount() uint {
+	count, err := strconv.Atoi(os.Getenv("RETRYCOUNT"))
+	if err == nil && count > 0 {
+		return uint(count)
+	}
+
+	return 3
+}
+
 // setupOctopus creates an Octopus container
 func (o *OctopusContainerTest) setupOctopus(ctx context.Context, connString string) (*OctopusContainer, error) {
 	if os.Getenv("LICENSE") == "" {
@@ -143,15 +162,8 @@ func (o *OctopusContainerTest) setupOctopus(ctx context.Context, connString stri
 		return nil, errors.New("the LICENSE environment variable must be set to a base 64 encoded Octopus license key")
 	}
 
-	octoTag := "latest"
-	overrideOctoTag := os.Getenv("OCTOVERSION")
-
-	if overrideOctoTag != "" {
-		octoTag = overrideOctoTag
-	}
-
 	req := testcontainers.ContainerRequest{
-		Image:        "octopusdeploy/octopusdeploy:" + octoTag,
+		Image:        "octopusdeploy/octopusdeploy:" + o.getOctopusVersion(),
 		ExposedPorts: []string{"8080/tcp"},
 		Env: map[string]string{
 			"ACCEPT_EULA":                   "Y",
@@ -264,7 +276,7 @@ func (o *OctopusContainerTest) ArrangeTest(t *testing.T, testFunc func(t *testin
 
 			return testFunc(t, octopusContainer, client)
 		},
-		retry.Attempts(1),
+		retry.Attempts(o.getRetryCount()),
 	)
 
 	if err != nil {
@@ -398,9 +410,7 @@ func (o *OctopusContainerTest) initialiseOctopus(t *testing.T, container *Octopu
 			vars = populateVars
 		}
 
-		if os.Getenv("ENABLE_WORKAROUND") == "true" {
-			o.waitForSpace(container.URI, spaceId)
-		}
+		o.waitForSpace(container.URI, spaceId)
 
 		err = o.terraformApply(t, terraformProjectDir, container.URI, spaceId, vars)
 
