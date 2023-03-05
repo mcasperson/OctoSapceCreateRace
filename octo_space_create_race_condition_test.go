@@ -15,7 +15,7 @@ func TestCreateSpaceAndUseIt(t *testing.T) {
 		t.Log("Attempt " + fmt.Sprint(i+1))
 
 		testFramework.ArrangeTest(t, func(t *testing.T, container *test.OctopusContainer, client *client.Client) error {
-			_, err := testFramework.Act(t, container, filepath.Join("test", "terraform", "2-usenewspace"), []string{})
+			_, err := testFramework.Act(t, container, filepath.Join("terraform", "2-usenewspace"), []string{})
 			return err
 		})
 	}
