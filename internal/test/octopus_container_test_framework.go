@@ -297,9 +297,9 @@ func (o *OctopusContainerTest) terraformInit(t *testing.T, terraformProjectDir s
 	args := []string{"init", "-no-color"}
 	cmnd := exec.Command("terraform", args...)
 	cmnd.Dir = terraformProjectDir
-	out, err := cmnd.Output()
+	_, err := cmnd.Output()
 
-	t.Log(string(out))
+	//t.Log(string(out))
 
 	if err != nil {
 		exitError, ok := err.(*exec.ExitError)
@@ -328,9 +328,9 @@ func (o *OctopusContainerTest) terraformApply(t *testing.T, terraformProjectDir 
 
 	cmnd := exec.Command("terraform", newArgs...)
 	cmnd.Dir = terraformProjectDir
-	out, err := cmnd.Output()
+	_, err := cmnd.Output()
 
-	t.Log(string(out))
+	//t.Log(string(out))
 
 	if err != nil {
 		exitError, ok := err.(*exec.ExitError)
