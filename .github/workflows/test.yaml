@@ -90,7 +90,6 @@ jobs:
         shell: bash
         env:
           LICENSE: ${{ secrets.LICENSE }}
-          ENABLE_WORKAROUND: !!str true
           OCTOVERSION: 2022.4
       - if: always()
         name: Report
