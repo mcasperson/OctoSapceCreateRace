@@ -99,7 +99,7 @@ jobs:
         name: Report
         uses: dorny/test-reporter@v1
         with:
-          name: Go Tests - Latest with workaround
+          name: Go Tests - 2022.4 with workaround
           path: results.xml
           reporter: java-junit
           fail-on-error: 'false'
