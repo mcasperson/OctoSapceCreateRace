@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/OctopusDeploy/go-octopusdeploy/v2 v2.21.0
-	github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230305230704-2252cb8d5905
+	github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230306040355-5a435b9a4cd2
 )
 
 require (

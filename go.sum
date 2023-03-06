@@ -510,6 +510,8 @@ github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230305225848-5123f9
 github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230305225848-5123f9c516b9/go.mod h1:SC8/27IDrcEzCWrARYeTZ8yZtM1hGMFHC5DrOHks14Y=
 github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230305230704-2252cb8d5905 h1:e7ii0SKLsEqtzzo6q0PUIkRa3UZ+jCFKpjmjMZOSBzk=
 github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230305230704-2252cb8d5905/go.mod h1:k6LkAcykjgqJYo9vVyfD7X96E85aAVrLlljtKMr27wU=
+github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230306040355-5a435b9a4cd2 h1:nXmU52sPcNYfh/VC/QjXqZ8Y+WtwkoRv9EvEmP9S7DY=
+github.com/mcasperson/OctopusTerraformTestFramework v0.0.0-20230306040355-5a435b9a4cd2/go.mod h1:k6LkAcykjgqJYo9vVyfD7X96E85aAVrLlljtKMr27wU=
 github.com/miekg/pkcs11 v1.0.3/go.mod h1:XsNlhZGX73bx86s2hdc/FuaLm2CPZJemRLMA+WTFxgs=
 github.com/mistifyio/go-zfs v2.1.2-0.20190413222219-f784269be439+incompatible/go.mod h1:8AuVvqP/mXw1px98n46wfvcGfQ4ci2FwoAjKYxuo3Z4=
 github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
